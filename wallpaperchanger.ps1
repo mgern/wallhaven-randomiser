@@ -6,9 +6,7 @@ $liSelector = "li"
 
 # CSS selector for the section
 $sectionSelector = 'section class="thumb-listing-page"'
-
-# Output path for the text content of the first list item
-$outputPath = "~/output.txt"
+$scriptPath = $MyInvocation.MyCommand.Path
 $imagePath = "$env:TEMP\wallpaper.jpg"
 
 # Download the HTML content of the website
@@ -66,7 +64,20 @@ if ($match.Success) {
 $hrefValue = $hrefValue[-6..-1] -join ''
 $firstTwoChars = $hrefValue.Substring(0, 2)
 $newUrl = "https://w.wallhaven.cc/full/${firstTwoChars}/wallhaven-${hrefValue}.jpg"
-Invoke-WebRequest -Uri $newUrl -OutFile $imagePath
+
+    # Use Invoke-WebRequest to download the image
+    try {
+        Invoke-WebRequest -Uri $newUrl -OutFile $imagePath
+    }
+    catch {
+
+        Write-Host "Image not found. Restarting the script..."
+
+        # Restart the script
+        & "$scriptPath"
+        exit
+    }
+
 Write-Output $newUrl
 
 
