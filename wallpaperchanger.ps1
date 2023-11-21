@@ -12,7 +12,7 @@ $failed = 0
 
 function DownloadImage(){
     # Download the HTML content of the website
-    $html = Invoke-WebRequest -Uri $url
+    $html = Invoke-WebRequest -Uri  $url -UseBasicParsing
 
     # Find the section with the specified class
     $sectionTag = $html.RawContent -match "<$sectionSelector>(.*?)</section>"
@@ -72,7 +72,7 @@ function DownloadImage(){
     Write-Output "Downloading..."
     # Use Invoke-WebRequest to download the image
     try {
-        Invoke-WebRequest -Uri $newUrl -OutFile $imagePath
+        Invoke-WebRequest -Uri  $newUrl -OutFile $imagePath -UseBasicParsing
         $failed = 0
     }
     catch {
@@ -112,5 +112,4 @@ DownloadImage
 Write-Output "Setting as wallpaper..."
 SetImage
 
-Write-Output "Done.. Press enter to close"
-Read-Host 
+Write-Output "Done!"
