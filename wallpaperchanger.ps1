@@ -1,5 +1,36 @@
 # URL of the website
-$url = "https://wallhaven.cc/random"
+$url = "https://wallhaven.cc/search?categories=100&purity=100&atleast=2560x1440&sorting=random&order=desc"
+
+#########
+#OPTIONS, CHANGE THE ABOVE URL TO THE ONES BELOW
+#Presets:
+
+#I WANT SKETCHY/NSFW STUFF TOO
+# https://wallhaven.cc/search?categories=111&purity=010&sorting=random&order=desc
+
+# NO ANIME (dont do this, no fun)
+# https://wallhaven.cc/search?categories=100&purity=100&sorting=random&order=desc
+
+#NO ANIME AND HIGH RES
+# https://wallhaven.cc/search?categories=100&purity=100&atleast=2560x1440&sorting=random&order=desc
+
+# I want HIGH RES (2560x1440) or set to any other BLAxBLA for a resolution you want
+#https://wallhaven.cc/search?categories=110&purity=100&atleast=2560x1440&sorting=random&order=desc
+
+# &categories="110" explanation:
+# bitmap flags 
+# first bit = general on/off, second bit = anime on/off, third bit = people on/off
+# EXAMPLE:
+# 111 = general,anime,people
+# 011 = anime,people
+# 100 = just general
+
+# &purity="100" explanation:
+# 100 = SFW
+# 110 = SFW AND NSFW
+# 010 = JUST NSFW
+
+#########
 
 # CSS selector for the list item
 $liSelector = "li"
